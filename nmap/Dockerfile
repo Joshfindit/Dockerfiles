@@ -6,9 +6,8 @@ FROM alpine:latest
 
 MAINTAINER Brent Salisbury <brent.salisbury@gmail.com>
 
-# build initial cache | install binary | remove cache
-RUN apk update && apk add \
-	nmap \
-	&& rm -rf /var/cache/apk/*
+# install binary without cache
+RUN apk --no-cache add \
+	nmap
 
 ENTRYPOINT ["nmap"]
